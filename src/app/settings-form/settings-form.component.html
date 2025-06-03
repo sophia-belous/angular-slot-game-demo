@@ -1,0 +1,26 @@
+<form [formGroup]="settingsForm" class="settings-form" (ngSubmit)="startGame()">
+  <label>
+    Falling Speed:
+    <input type="number" formControlName="fallingSpeed">
+  </label>
+
+  <label>
+    Falling Frequency (ms):
+    <input type="number" formControlName="fallingFrequency">
+  </label>
+
+  <label>
+    Player Speed:
+    <input type="number" formControlName="playerSpeed">
+  </label>
+
+  <label>
+    Game Time (s):
+    <input type="number" formControlName="gameTime">
+  </label>
+  <button type="submit" [disabled]="!settingsForm.valid">Start / Restart Game</button>
+  <button type="button" (click)="stopGame()">Stop Game</button>
+</form>
+<div class="error" *ngIf="!settingsForm.valid">
+  Please fill all fields with valid numbers.
+</div>

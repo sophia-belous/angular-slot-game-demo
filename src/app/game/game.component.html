@@ -1,0 +1,28 @@
+<div #gameContainer class="game-area" [class.game-over]="isGameOver$ | async"
+     [style]="{
+          '--containerHeight': gameSettings.containerHeight + 'px',
+          '--containerWidth': gameSettings.containerWidth + 'px',
+          '--playerHeight': gameSettings.playerHeight + 'px',
+          '--playerWidth': gameSettings.playerWidth + 'px',
+          '--objectSize': gameSettings.objectSize + 'px',
+     }"
+>
+  <div
+    class="falling-object"
+    *ngFor="let fallingObject of (gameState$ | async)?.fallingObjects"
+    [style.left.px]="fallingObject.x"
+    [style.top.px]="fallingObject.y"
+  ></div>
+  <div
+    class="player"
+    [style.left.px]="(gameState$ | async)?.playerX"
+  ></div>
+  <div class="scoreboard">
+    Score: {{ (gameState$ | async)?.score }} |
+    Time: {{ (gameState$ | async)?.timeLeft }}s
+  </div>
+  <div class="game-over-banner" *ngIf="(isGameOver$ | async) && (gamePlayedOnce$ | async)">
+    <h2>Game Over!</h2>
+    <button (click)="startGame()">Restart</button>
+  </div>
+</div>

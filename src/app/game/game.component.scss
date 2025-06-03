@@ -1,0 +1,56 @@
+.game-area {
+  position: relative;
+  width: var(--containerWidth);
+  height: var(--containerHeight);
+  background-color: #f0f0f0;
+  border: 2px solid #333;
+  margin: 20px auto;
+  overflow: hidden;
+
+  &.game-over {
+    .player,
+    .falling-object {
+      filter: grayscale(100%);
+    }
+  }
+}
+
+.player {
+  position: absolute;
+  width: var(--playerWidth);
+  height: var(--playerHeight);
+  background-color: #4caf50;
+  bottom: 0;
+}
+
+.falling-object {
+  position: absolute;
+  width: var(--objectSize);
+  height: var(--objectSize);
+  background-color: #f44336;
+  border-radius: 50%;
+}
+
+.player,
+.falling-object {
+  transition: all 0.1s linear;
+}
+
+.scoreboard {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.game-over-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
