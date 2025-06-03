@@ -1,6 +1,7 @@
 import {inject, Injectable, OnDestroy} from '@angular/core';
 import {GameService, Settings} from './game.service';
 import {BehaviorSubject, Subject, takeUntil} from 'rxjs';
+import {WebsocketService} from '../websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,17 @@ export class GameControlService implements OnDestroy {
   private objectSpawnIntervalId: any = null;
 
   private gameService = inject(GameService);
+  private webSocket = inject(WebsocketService);
 
   private destroy$ = new Subject<void>();
 
   constructor() {
     this.gameService.gameOver$
       .pipe(takeUntil(this.destroy$))
-      .subscribe(() => {
+      .subscribe(score => {
         this.stopGame();
+
+          this.webSocket.sendMessage({ event: 'gameOver', score });
       });
   }
 

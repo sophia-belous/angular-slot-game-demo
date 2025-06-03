@@ -72,7 +72,7 @@ export class GameService implements OnDestroy {
 
   gameState$ = this._gameState$.asObservable();
 
-  gameOver$ = new Subject<void>(); // emits when the game ends
+  gameOver$ = new Subject<number>(); // emits when the game ends
 
   updateSettings(newSettings: Partial<Settings>) {
     this._settings = { ...this._settings, ...newSettings };
@@ -184,7 +184,7 @@ export class GameService implements OnDestroy {
       this._gameState$.next({ ...currentState, timeLeft: this._timeLeft });
       if (this._timeLeft <= 0) {
         if (this._timerSub) this._timerSub.unsubscribe();
-        this.gameOver$.next();
+        this.gameOver$.next(currentState.score);
       }
     });
   }
