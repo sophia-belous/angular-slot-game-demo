@@ -1,7 +1,7 @@
 import {Component, ElementRef, inject, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {GameService} from './game.service';
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import {filter, fromEvent, map, Subject, takeUntil} from 'rxjs';
+import {debounceTime, filter, fromEvent, map, Subject, takeUntil} from 'rxjs';
 import {GameControlService} from './game-control.service';
 
 @Component({

@@ -1,15 +1,28 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Settings} from '../game/game.service';
-import {NgIf} from '@angular/common';
+import {CommonModule, NgIf} from '@angular/common';
 import {GameControlService} from '../game/game-control.service';
 import {delay} from 'rxjs';
+import {MatCard, MatCardTitle} from '@angular/material/card';
+import {MatDivider} from '@angular/material/divider';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-settings-form',
   imports: [
     ReactiveFormsModule,
-    NgIf
+    NgIf,
+    MatCard,
+    MatCardTitle,
+    MatDivider,
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   templateUrl: './settings-form.component.html',
   standalone: true,
@@ -45,7 +58,6 @@ export class SettingsFormComponent implements OnInit {
 
   startGame() {
     if (this.settingsForm.valid) {
-      console.log('start game');
       this.applySettings();
       this.gameControl.restartGame();
     }

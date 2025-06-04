@@ -1,26 +1,70 @@
-<form [formGroup]="settingsForm" class="settings-form">
-  <label>
-    Falling Speed:
-    <input type="number" formControlName="fallingSpeed">
-  </label>
+<!--<form [formGroup]="settingsForm" class="settings-form">-->
+<!--  <label>-->
+<!--    Falling Speed:-->
+<!--    <input type="number" formControlName="fallingSpeed">-->
+<!--  </label>-->
 
-  <label>
-    Falling Frequency (ms):
-    <input type="number" formControlName="fallingFrequency">
-  </label>
+<!--  <label>-->
+<!--    Falling Frequency (ms):-->
+<!--    <input type="number" formControlName="fallingFrequency">-->
+<!--  </label>-->
 
-  <label>
-    Player Speed:
-    <input type="number" formControlName="playerSpeed">
-  </label>
+<!--  <label>-->
+<!--    Player Speed:-->
+<!--    <input type="number" formControlName="playerSpeed">-->
+<!--  </label>-->
 
-  <label>
-    Game Time (s):
-    <input type="number" formControlName="gameTime">
-  </label>
-  <button type="button" [disabled]="!settingsForm.valid"  (click)="startGame()">Start / Restart Game</button>
-  <button type="button" (click)="stopGame()">Stop Game</button>
-</form>
-<div class="validation-message" *ngIf="!settingsForm.valid">
-  Please enter a valid non-negative number.
-</div>
+<!--  <label>-->
+<!--    Game Time (s):-->
+<!--    <input type="number" formControlName="gameTime">-->
+<!--  </label>-->
+<!--  <button type="button" [disabled]="!settingsForm.valid"  (click)="startGame()">Start / Restart Game</button>-->
+<!--  <button type="button" (click)="stopGame()">Stop Game</button>-->
+<!--</form>-->
+<!--<div class="validation-message" *ngIf="!settingsForm.valid">-->
+<!--  Please enter a valid non-negative number.-->
+<!--</div>-->
+
+
+<mat-card>
+  <mat-card-title>Game Settings</mat-card-title>
+  <mat-divider></mat-divider>
+  <form [formGroup]="settingsForm" novalidate>
+    <mat-form-field appearance="fill">
+      <mat-label>Falling Speed</mat-label>
+      <input matInput type="number" formControlName="fallingSpeed" />
+      <mat-error *ngIf="settingsForm.get('fallingSpeed')?.hasError('min')">
+        Must be ≥ 0
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Falling Frequency (ms)</mat-label>
+      <input matInput type="number" formControlName="fallingFrequency" />
+      <mat-error *ngIf="settingsForm.get('fallingFrequency')?.hasError('min')">
+        Must be ≥ 50
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Player Speed</mat-label>
+      <input matInput type="number" formControlName="playerSpeed" />
+      <mat-error *ngIf="settingsForm.get('playerSpeed')?.hasError('min')">
+        Must be ≥ 1
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Game Time (seconds)</mat-label>
+      <input matInput type="number" formControlName="gameTime" />
+      <mat-error *ngIf="settingsForm.get('gameTime')?.hasError('min')">
+        Must be ≥ 1
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <p class="info-message">
+    🎮 Use <strong>←</strong> and <strong>→</strong> arrow keys to move the player.
+  </p>
+</mat-card>
+

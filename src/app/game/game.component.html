@@ -21,11 +21,8 @@
     Score: {{ (gameState$ | async)?.score }} |
     Time: {{ (gameState$ | async)?.timeLeft }}s
   </div>
-  <div class="game-over-banner" *ngIf="(isGameOver$ | async) && (gamePlayedOnce$ | async)">
-    <h2>Game Over!</h2>
-    <button (click)="startGame()">Restart</button>
+  <div class="game-over-banner" *ngIf="isGameOver$ | async">
+    <h2 *ngIf="gamePlayedOnce$ | async">Game Over!</h2>
+    <button (click)="startGame()">Start New Game</button>
   </div>
 </div>
-<p class="info-message">
-  👉 Use <strong>Arrow Left</strong> and <strong>Arrow Right</strong> keys to move the player.
-</p>

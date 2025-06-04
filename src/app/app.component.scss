@@ -1,0 +1,10 @@
+.game-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  gap: 2rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+  background-color: #242e59;
+}
