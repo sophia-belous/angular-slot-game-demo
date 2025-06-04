@@ -46,7 +46,13 @@ export class GameControlService implements OnDestroy {
   }
 
   updateSettings(newSettings: Partial<Settings>) {
+    const restartSpawning = newSettings.fallingFrequency !== this.gameService.settings.fallingFrequency;
+
     this.gameService.updateSettings(newSettings);
+
+    if (restartSpawning && this.isRunning) {
+      this.startSpawningObjects(); // safely restart the interval
+    }
   }
 
 

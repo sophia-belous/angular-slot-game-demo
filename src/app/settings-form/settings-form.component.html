@@ -1,4 +1,4 @@
-<form [formGroup]="settingsForm" class="settings-form" (ngSubmit)="startGame()">
+<form [formGroup]="settingsForm" class="settings-form">
   <label>
     Falling Speed:
     <input type="number" formControlName="fallingSpeed">
@@ -18,9 +18,9 @@
     Game Time (s):
     <input type="number" formControlName="gameTime">
   </label>
-  <button type="submit" [disabled]="!settingsForm.valid">Start / Restart Game</button>
+  <button type="button" [disabled]="!settingsForm.valid"  (click)="startGame()">Start / Restart Game</button>
   <button type="button" (click)="stopGame()">Stop Game</button>
 </form>
-<div class="error" *ngIf="!settingsForm.valid">
-  Please fill all fields with valid numbers.
+<div class="validation-message" *ngIf="!settingsForm.valid">
+  Please enter a valid non-negative number.
 </div>

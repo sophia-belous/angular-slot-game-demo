@@ -1,5 +1,6 @@
 {
   "name": "slot-mini-game",
+  "homepage": "https://sophia-belous.github.io/angular-slot-game-demo",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

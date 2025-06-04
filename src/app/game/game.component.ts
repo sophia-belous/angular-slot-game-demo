@@ -12,6 +12,7 @@ import {GameControlService} from './game-control.service';
     NgIf
   ],
   templateUrl: './game.component.html',
+  standalone: true,
   styleUrl: './game.component.scss'
 })
 export class GameComponent implements OnInit, OnDestroy {

@@ -21,4 +21,17 @@
     font-size: 12px;
     text-align: center;
   }
+
+  input.ng-invalid {
+    border-color: red;
+    background-color: #ffe6e6;
+  }
+}
+
+.validation-message {
+  display: flex;
+  justify-content: center;
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 2px;
 }

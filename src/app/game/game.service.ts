@@ -65,7 +65,7 @@ export class GameService implements OnDestroy {
   private _animationFrameId: number | null = null;
 
   private _gameState$ = new BehaviorSubject<GameState>({
-    playerX: 150,
+    playerX: this._settings.containerWidth / 2 - this._settings.playerWidth / 2,
     fallingObjects: [],
     score: 0,
     timeLeft: 0})
@@ -105,10 +105,12 @@ export class GameService implements OnDestroy {
   }
 
   spawnObject() {
+    const minX = 0;
+    const maxX = this._settings.containerWidth - this._settings.objectSize;
     const gameObject: GameObject = {
       id: this._nextObjectId++,
       // it should be a random horizontal position limited to container width
-      x: Math.random() * this._settings.containerWidth - this._settings.playerWidth,
+      x: Math.random() * (maxX - minX) + minX,
       y: 0
     };
 

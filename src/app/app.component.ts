@@ -9,6 +9,7 @@ import {GameComponent} from './game/game.component';
     GameComponent
   ],
   templateUrl: './app.component.html',
+  standalone: true,
   styleUrl: './app.component.scss'
 })
 export class AppComponent {

@@ -74,4 +74,4 @@ Then navigate to [http://localhost:4200](http://localhost:4200) in your browser.
 - Clean Angular architecture
 - Component-provided service strategy
 - WebSocket usage
-- Deployment and CI/CD with GitHub Pages
+- Automatic Deployment and CI/CD with GitHub Pages
